@@ -1,7 +1,10 @@
+import xarray
 from collections import defaultdict
 from surprise import SVD
 from surprise import Dataset
 from surprise import Reader
+
+from .models import ReviewModel
 
 
 def get_top_n(predictions, n=10):
@@ -33,8 +36,11 @@ def get_top_n(predictions, n=10):
 
 def main_project(reco_id=1):
 
-    reader = Reader(line_format='user item rating timestamp', sep=',', rating_scale=(1, 5), skip_lines=0)
-    data = Dataset.load_from_file('/Users/AILAB/Desktop/ratings.csv', reader=reader)
+    #reader = Reader(line_format='user item rating timestamp', sep=',', rating_scale=(1, 5), skip_lines=0)
+    #data = Dataset.load_from_file('/Users/AILAB/Desktop/ratings.csv', reader=reader)
+
+    query_set = list(ReviewModel.objects.values())
+    data = xarray.Dataset.from_dict(query_set)
 
     trainset = data.build_full_trainset()
     algo = SVD()

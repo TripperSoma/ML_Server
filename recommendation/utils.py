@@ -22,7 +22,7 @@ def save_data(*args):
     ReviewModel(user_id=user_id, trip_id=trip_id, rating=rating, timestamp=timestamp).save()
 
 
-def import_data(file_name):
+def import_datas(file_name):
     f = open(file_name, 'r', encoding='utf-8')
     rdr = csv.reader(f)
     for line in rdr:
