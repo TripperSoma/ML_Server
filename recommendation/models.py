@@ -11,3 +11,13 @@ class ReviewModel(models.Model):
 
     class Meta:
         unique_together = (('user_id', 'trip_id'),)
+
+
+class RecommendModel(models.Model):
+    user_id = models.PositiveIntegerField(verbose_name='유저_아이디')
+    trip_id = models.PositiveIntegerField(verbose_name='추천_여행_아이디')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='생성일')
+    updated = models.DateTimeField(auto_now=True, verbose_name='수정일')
+
+    class Meta:
+        unique_together = (('user_id', 'trip_id'),)
