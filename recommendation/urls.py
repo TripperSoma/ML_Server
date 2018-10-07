@@ -5,5 +5,5 @@ from .views import recommend_view
 
 
 urlpatterns = [
-    path('', recommend_view),
+    path('<int:user_id>/', recommend_view, name='recommend_view'),
 ]

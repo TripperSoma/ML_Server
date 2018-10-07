@@ -17,7 +17,7 @@ class JsonMiddleware(MiddlewareMixin):
                 return HttpResponse(response, content_type='application/json')
             return HttpResponse(response)
         elif isinstance(response, (list, tuple, dict,)):
-            return JsonResponse(response, safe=False)
+            return JsonResponse(response)
         else:
             # Queryset, ... 처리 해주자
-            return HttpResponse(response)
+            return response

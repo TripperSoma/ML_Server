@@ -7,6 +7,8 @@ from .models import ReviewModel
 
 @require_GET
 @csrf_exempt
-def recommend_view(user_id):
+def recommend_view(request, user_id):
     # return main_project(user_id)
-    return list(ReviewModel.objects.values())
+    # return {'result', list(ReviewModel.objects.values())}
+    return {'result': [377, 203, 42, 154, 904, 1064, 1405]}
+
