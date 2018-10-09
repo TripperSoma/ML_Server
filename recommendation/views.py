@@ -14,7 +14,3 @@ def recommend_view(request, user_id):
     query_set = RecommendModel.objects.filter(user_id=user_id).values()
 
     return {'result': list(query_set)}
-
-class IndexView(View):
-    def get(self,request):
-        return HttpResponse('<h1>EB Django Project<h1>')
